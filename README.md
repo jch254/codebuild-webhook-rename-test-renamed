@@ -2,7 +2,7 @@
 
 Minimal reproduction of an issue with `aws_codebuild_webhook` where renaming a GitHub repository breaks the webhook without any detectable Terraform drift, and requires manual intervention to restore.
 
-> **Note:** This repo is already in the post-rename state. It was originally created as `codebuild-webhook-rename-test` and renamed to `codebuild-webhook-rename-test-updated`. The steps below describe the full sequence from the beginning.
+> **Note:** This repo is already in the post-rename state. It was originally created as `codebuild-webhook-rename-test`, renamed to `codebuild-webhook-rename-test-updated`, and renamed again to `codebuild-webhook-rename-test-renamed-again`. The steps below describe the full sequence from the beginning.
 
 ---
 
@@ -29,7 +29,7 @@ Renaming a GitHub repository breaks the webhook created by AWS CodeBuild.
 
 ### 2. Repository rename
 
-- `codebuild-webhook-rename-test` renamed to `codebuild-webhook-rename-test-updated`
+- `codebuild-webhook-rename-test` renamed to `codebuild-webhook-rename-test-updated`, then renamed again to `codebuild-webhook-rename-test-renamed-again`
 - GitHub removes or invalidates the webhook
 - CodeBuild no longer receives events ❌
 
