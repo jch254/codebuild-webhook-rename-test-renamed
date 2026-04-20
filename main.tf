@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-southeast-4"
+  region = "ap-southeast-2"
 }
 
 # --- variables ---
