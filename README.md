@@ -39,5 +39,4 @@ Renaming a GitHub repository breaks the webhook created by AWS CodeBuild.
 
 ## Related issue
 
-<!-- Add after creating -->
 <TBD>
