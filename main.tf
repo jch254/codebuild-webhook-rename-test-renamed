@@ -55,8 +55,10 @@ resource "aws_iam_role_policy" "codebuild" {
 # --- CodeBuild project ---
 
 resource "aws_codebuild_project" "example" {
-  name         = "codebuild-webhook-rename-repro"
-  service_role = aws_iam_role.codebuild.arn
+  name                 = "codebuild-webhook-rename-repro"
+  service_role         = aws_iam_role.codebuild.arn
+  project_visibility   = "PUBLIC_READ"
+  resource_access_role = aws_iam_role.codebuild.arn
 
   source {
     type      = "GITHUB"
