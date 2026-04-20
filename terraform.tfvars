@@ -1,1 +1,1 @@
-repo_url = "https://github.com/jch254/codebuild-webhook-rename-test-updated"
+repo_url = "https://github.com/jch254/codebuild-webhook-rename-test-renamed"
