@@ -2,6 +2,8 @@
 
 Minimal reproduction of an issue with `aws_codebuild_webhook` where renaming a GitHub repository breaks the webhook without any detectable Terraform drift, and requires manual intervention to restore.
 
+> **Note:** This repo is already in the post-rename state. It was originally created as `codebuild-webhook-rename-test` and renamed to `codebuild-webhook-rename-test-updated`. The steps below describe the full sequence from the beginning.
+
 ---
 
 ## Summary
@@ -27,7 +29,7 @@ Renaming a GitHub repository breaks the webhook created by AWS CodeBuild.
 
 ### 2. Repository rename
 
-- GitHub repository is renamed
+- `codebuild-webhook-rename-test` renamed to `codebuild-webhook-rename-test-updated`
 - GitHub removes or invalidates the webhook
 - CodeBuild no longer receives events ❌
 
@@ -87,16 +89,18 @@ Result:
 
 ## Steps to Reproduce
 
-1. Apply Terraform to create:
+1. Create a GitHub repo (e.g. `codebuild-webhook-rename-test`)
+2. Set `repo_url` in `terraform.tfvars` to the original repo URL
+3. Apply Terraform to create:
    - CodeBuild project
-   - aws_codebuild_webhook
-2. Push commit → verify build triggers
-3. Rename the GitHub repository
-4. Push commit → no builds triggered
-5. Run terraform plan -refresh-only → no drift detected
-6. Update repo URL in Terraform → apply
-7. Push commit → still no builds triggered
-8. Recreate webhook via targeted apply → builds resume
+   - `aws_codebuild_webhook`
+4. Push commit → verify build triggers
+5. Rename the GitHub repository (e.g. to `codebuild-webhook-rename-test-updated`)
+6. Push commit → no builds triggered
+7. Run `terraform plan -refresh-only` → no drift detected
+8. Update `repo_url` in `terraform.tfvars` to the new URL → `terraform apply`
+9. Push commit → still no builds triggered
+10. Recreate webhook: `terraform destroy -target=aws_codebuild_webhook.example && terraform apply -target=aws_codebuild_webhook.example` → builds resume
 
 ---
 
