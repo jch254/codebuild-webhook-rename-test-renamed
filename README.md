@@ -1,5 +1,9 @@
 # CodeBuild Webhook Rename Repro
 
+[![Build Status](https://codebuild.ap-southeast-2.amazonaws.com/badges?uuid=TODO)](https://ap-southeast-2.codebuild.aws.amazon.com/project/eyJlbmNyeXB0ZWREYXRhIjoidmZkREJWTCtKZFJzK3B6RUxtTWlYUDFrQjg3RGl5ajJGNXVMU3M5ZzJwaUptTUEwcUM0THovZk9TeDhpV3NyaUtiQk5WYm9tNVhrZmxJZCtIeXFvUGQxRUNiV0VHS2c4T200Z0VKTWJ4RWRsMi9LQTQ1YUNLR2d1ZFgveEpHYXNCVnpoM1E9PSIsIml2UGFyYW1ldGVyU3BlYyI6ImFwckVBQTBMdFhFZ2t6RFAiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D)
+
+> **Badge URL:** replace `TODO` with the UUID from `terraform output -raw badge_url` after applying.
+
 Minimal reproduction of an issue with `aws_codebuild_webhook` where renaming a GitHub repository breaks the webhook without any detectable Terraform drift, and requires manual intervention to restore.
 
 > **Note:**

@@ -59,6 +59,7 @@ resource "aws_codebuild_project" "example" {
   service_role         = aws_iam_role.codebuild.arn
   project_visibility   = "PUBLIC_READ"
   resource_access_role = aws_iam_role.codebuild.arn
+  badge_enabled        = true
 
   source {
     type      = "GITHUB"
@@ -88,4 +89,10 @@ EOF
 
 resource "aws_codebuild_webhook" "example" {
   project_name = aws_codebuild_project.example.name
+}
+
+# --- Outputs ---
+
+output "badge_url" {
+  value = aws_codebuild_project.example.badge_url
 }
