@@ -76,8 +76,8 @@ Updating the source location alone is NOT sufficient.
 
 You must force recreation of the webhook:
 
-terraform destroy -target=aws_codebuild_webhook.this
-terraform apply   -target=aws_codebuild_webhook.this
+terraform destroy -target=aws_codebuild_webhook.example
+terraform apply   -target=aws_codebuild_webhook.example
 
 Result:
 
