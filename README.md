@@ -181,4 +181,4 @@ Expected behavior:
 
 ## Related issue
 
-TBC
+https://github.com/hashicorp/terraform-provider-aws/issues/47546
